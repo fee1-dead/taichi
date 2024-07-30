@@ -24,3 +24,5 @@ target_include_directories(taichi_util
   )
 
 target_link_libraries(taichi_util PUBLIC taichi_common)
+
+install(TARGETS taichi_util DESTINATION ${CMAKE_INSTALL_PREFIX})

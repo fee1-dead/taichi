@@ -118,3 +118,5 @@ target_link_libraries(ti_device_api_shared PUBLIC ${TAICHI_DEVICE_API})
 # to work properly, else link.exe would complain about LNK4001 warning, and fail afterwards.
 # Adding a dummy file to workaround this.
 target_sources(ti_device_api_shared PRIVATE dummy.cpp)
+
+install(TARGETS ${TAICHI_DEVICE_API} DESTINATION ${CMAKE_INSTALL_PREFIX})

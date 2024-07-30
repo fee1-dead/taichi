@@ -134,7 +134,7 @@ endif ()
 add_subdirectory(taichi/rhi)
 
 set(CORE_LIBRARY_NAME taichi_core)
-add_library(${CORE_LIBRARY_NAME} OBJECT ${TAICHI_CORE_SOURCE})
+add_library(${CORE_LIBRARY_NAME} STATIC ${TAICHI_CORE_SOURCE})
 
 target_include_directories(${CORE_LIBRARY_NAME} PRIVATE ${CMAKE_SOURCE_DIR})
 target_include_directories(${CORE_LIBRARY_NAME} PRIVATE external/include)
@@ -272,7 +272,7 @@ add_subdirectory(taichi/common)
 add_subdirectory(taichi/compilation_manager)
 
 target_link_libraries(${CORE_LIBRARY_NAME} PRIVATE taichi_util)
-target_link_libraries(${CORE_LIBRARY_NAME} PRIVATE taichi_common)
+target_link_libraries(${CORE_LIBRARY_NAME} PUBLIC taichi_common)
 target_link_libraries(${CORE_LIBRARY_NAME} PRIVATE compilation_manager)
 
 if (TI_WITH_CUDA AND TI_WITH_CUDA_TOOLKIT)
@@ -352,16 +352,7 @@ if(TI_WITH_PYTHON)
 
     message("PYTHON_LIBRARIES: " ${PYTHON_LIBRARIES})
     set(CORE_WITH_PYBIND_LIBRARY_NAME taichi_python)
-    if (NOT ANDROID)
-        # NO_EXTRAS is required here to avoid llvm symbol error during build
-        file(GLOB TAICHI_PYBIND_SOURCE
-            "taichi/python/*.cpp"
-            "taichi/python/*.h"
-        )
-        pybind11_add_module(${CORE_WITH_PYBIND_LIBRARY_NAME} NO_EXTRAS ${TAICHI_PYBIND_SOURCE})
-    else()
-        add_library(${CORE_WITH_PYBIND_LIBRARY_NAME} SHARED)
-    endif ()
+    add_library(${CORE_WITH_PYBIND_LIBRARY_NAME} SHARED)
 
     # Remove symbols from static libs: https://stackoverflow.com/a/14863432/12003165
     if (LINUX)
@@ -436,3 +427,15 @@ if (TI_WITH_AMDGPU)
     install(FILES ${AMDGPU_BC_FILES}
             DESTINATION ${INSTALL_LIB_DIR}/runtime)
 endif()
+
+install(DIRECTORY taichi/
+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/taichi
+    FILES_MATCHING PATTERN "*.h" PATTERN "*.hpp"
+)
+
+install(DIRECTORY external/spdlog/include/spdlog
+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/
+    FILES_MATCHING PATTERN "*.h"
+)
+
+install(TARGETS taichi_core DESTINATION ${CMAKE_INSTALL_PREFIX})

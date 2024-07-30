@@ -70,7 +70,7 @@ if (${CMAKE_GENERATOR} STREQUAL "Xcode")
 elseif (MSVC)
   target_link_libraries(${TAICHI_C_API_NAME} PRIVATE taichi_core)
 else()
-  target_link_static_library(${TAICHI_C_API_NAME} taichi_core)
+  target_link_libraries(${TAICHI_C_API_NAME} PRIVATE taichi_core)
 endif()
 target_enable_function_level_linking(${TAICHI_C_API_NAME})
 

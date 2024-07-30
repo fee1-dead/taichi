@@ -20,3 +20,5 @@ target_include_directories(taichi_common
   PRIVATE
     ${PROJECT_SOURCE_DIR}
   )
+
+install(TARGETS taichi_common DESTINATION ${CMAKE_INSTALL_PREFIX})
