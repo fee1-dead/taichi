@@ -1,12 +1,9 @@
-#include "taichi/ir/ir_builder.h"
+#pragma once
+#include "taichi/program/kernel.h"
 
 namespace taichi::lang {
-    std::unique_ptr<IRBuilder> ir_builder_new();
-    enum class PrimTy: uint16_t {
-        #define PER_TYPE(x) x,
-        #include "taichi/inc/data_type.inc.h"
-        #undef PER_TYPE
-    };
-    AllocaStmt* ir_builder_create_local_var(IRBuilder* builder, PrimTy ty);
+    std::unique_ptr<Kernel> new_kernel(Program &program,
+         std::unique_ptr<IRNode> ir,
+         const std::string &name = "",
+         AutodiffMode autodiff_mode = AutodiffMode::kNone);
 }
-
