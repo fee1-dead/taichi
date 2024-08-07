@@ -438,4 +438,8 @@ install(DIRECTORY external/spdlog/include/spdlog
     FILES_MATCHING PATTERN "*.h"
 )
 
+install(DIRECTORY external/eigen/Eigen
+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/
+)
+
 install(TARGETS taichi_core DESTINATION ${CMAKE_INSTALL_PREFIX})
