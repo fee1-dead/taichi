@@ -18,3 +18,4 @@ target_include_directories(opengl_program_impl
 target_link_libraries(opengl_program_impl PRIVATE gfx_runtime)
 target_link_libraries(opengl_program_impl PRIVATE gfx_program_impl)
 target_link_libraries(opengl_program_impl PRIVATE compilation_manager)
+install(TARGETS opengl_program_impl DESTINATION ${CMAKE_INSTALL_PREFIX})

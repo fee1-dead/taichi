@@ -38,3 +38,4 @@ if(TI_WITH_VULKAN)
 endif()
 
 target_link_libraries(${COMMON_RHI} PRIVATE taichi_util)
+install(TARGETS common_rhi DESTINATION ${CMAKE_INSTALL_PREFIX})

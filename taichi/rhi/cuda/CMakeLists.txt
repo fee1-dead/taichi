@@ -20,3 +20,4 @@ target_include_directories(${CUDA_RHI}
   )
 
 target_link_libraries(${CUDA_RHI} PRIVATE interop_rhi)
+install(TARGETS cuda_rhi DESTINATION ${CMAKE_INSTALL_PREFIX})

@@ -14,3 +14,4 @@ target_include_directories(${LLVM_RHI}
   )
 
 target_link_libraries(${LLVM_RHI} PRIVATE taichi_util)
+install(TARGETS llvm_rhi DESTINATION ${CMAKE_INSTALL_PREFIX})
