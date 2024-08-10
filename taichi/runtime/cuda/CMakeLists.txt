@@ -14,3 +14,4 @@ target_include_directories(cuda_runtime
     ${PROJECT_SOURCE_DIR}/external/spdlog/include
     ${LLVM_INCLUDE_DIRS}
   )
+install(TARGETS cuda_runtime DESTINATION ${CMAKE_INSTALL_PREFIX})
