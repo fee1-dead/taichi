@@ -22,3 +22,4 @@ target_include_directories(gfx_runtime
         ${LLVM_INCLUDE_DIRS}
   )
 target_link_libraries(gfx_runtime PRIVATE taichi_common)
+install(TARGETS gfx_runtime DESTINATION ${CMAKE_INSTALL_PREFIX})

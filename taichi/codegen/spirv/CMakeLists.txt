@@ -27,3 +27,4 @@ target_link_libraries(spirv_codegen PRIVATE taichi_util)
 # NOTE: SPIRV-Tools-opt must come before SPIRV-Tools
 # https://github.com/KhronosGroup/SPIRV-Tools/issues/1569#issuecomment-390250792
 target_link_libraries(spirv_codegen PRIVATE SPIRV-Tools-opt ${SPIRV_TOOLS})
+install(TARGETS spirv_codegen DESTINATION ${CMAKE_INSTALL_PREFIX})

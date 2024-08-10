@@ -13,3 +13,4 @@ target_include_directories(compilation_manager
     ${PROJECT_SOURCE_DIR}/external/eigen
     ${LLVM_INCLUDE_DIRS} # For "llvm/ADT/SmallVector.h" included in ir.h
   )
+install(TARGETS compilation_manager DESTINATION ${CMAKE_INSTALL_PREFIX})

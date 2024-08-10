@@ -16,3 +16,4 @@ target_include_directories(cpu_runtime
     ${PROJECT_SOURCE_DIR}/external/spdlog/include
     ${LLVM_INCLUDE_DIRS}
   )
+install(TARGETS cpu_runtime DESTINATION ${CMAKE_INSTALL_PREFIX})

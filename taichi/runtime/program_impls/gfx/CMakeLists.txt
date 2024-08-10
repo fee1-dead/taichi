@@ -17,3 +17,4 @@ target_include_directories(gfx_program_impl
 
 target_link_libraries(gfx_program_impl PRIVATE gfx_runtime)
 target_link_libraries(gfx_program_impl PRIVATE compilation_manager)
+install(TARGETS gfx_program_impl DESTINATION ${CMAKE_INSTALL_PREFIX})

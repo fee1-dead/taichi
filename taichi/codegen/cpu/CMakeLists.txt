@@ -15,3 +15,4 @@ target_include_directories(cpu_codegen
 
 target_link_libraries(cpu_codegen PRIVATE taichi_util)
 target_link_libraries(cpu_codegen PRIVATE cpu_runtime)
+install(TARGETS cpu_codegen DESTINATION ${CMAKE_INSTALL_PREFIX})

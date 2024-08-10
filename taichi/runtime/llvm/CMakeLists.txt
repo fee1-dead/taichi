@@ -40,3 +40,4 @@ if (TI_WITH_DX12)
 endif()
 
 target_link_libraries(llvm_runtime PRIVATE ti_device_api)
+install(TARGETS llvm_runtime DESTINATION ${CMAKE_INSTALL_PREFIX})

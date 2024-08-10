@@ -20,3 +20,4 @@ target_include_directories(llvm_codegen
 
 target_link_libraries(llvm_codegen PRIVATE taichi_util)
 target_link_libraries(llvm_codegen PRIVATE llvm_runtime)
+install(TARGETS llvm_codegen DESTINATION ${CMAKE_INSTALL_PREFIX})
